@@ -31,72 +31,66 @@
 
     <section>
       <div class="highlight">
-        <strong>Important:</strong> This Chrome extension is <strong>private and exclusively for internal use</strong> by employees and authorized agents of our organization (ASL Preservation Solutions). It is not intended for public or third-party use.
+        <strong>Important:</strong> This is a <strong>private, internal-use-only</strong> Chrome extension developed exclusively for employees and authorized agents of ASL Preservation Solutions. It is not distributed publicly.
       </div>
-
-      <p>All users (agents/photographers) are informed in advance and explicitly agree that their work data will be collected and stored through this extension for internal quality control and performance monitoring purposes.</p>
+      <p>All users are informed and agree that their work data is collected through this tool for internal quality and performance monitoring.</p>
     </section>
 
-    <h2>1. Data We Collect (Only When Using the Extension on Floorfy)</h2>
+    <h2>1. Data We Collect (Only on Floorfy Pages)</h2>
     <ul>
-      <li><strong>Tour Number</strong> – The unique Floorfy tour identifier (we do <strong>not</strong> collect or store the full URL)</li>
+      <li><strong>Tour Number</strong> (we never collect or store the full URL)</li>
       <li><strong>Number of images generated</strong> for that tour</li>
-      <li><strong>Employee / Agent name</strong> – Automatically taken from the name associated with your Google account (the one you use to log in to Google Sheets)</li>
+      <li><strong>Employee / Agent name</strong> – Automatically taken from your Google account display name</li>
       <li><strong>Date and time</strong> of the entry</li>
     </ul>
-    <p>This data is used solely to analyze employee quality, creativity, and productivity within our organization.</p>
+    <p>Purpose: Internal analysis of employee quality, creativity, and productivity.</p>
 
-    <h2>2. Purpose of Data Collection</h2>
-    <p>The only purpose of collecting this information is internal performance monitoring and quality assurance of virtual tours created for ASL Preservation Solutions. No data is shared with any external parties.</p>
+    <h2>2. Google Sheets Integration</h2>
+    <p>The extension appends the above data directly to the company’s private Google Sheet (via secure Google OAuth). It only has permission to add new rows — it cannot read or modify existing data.</p>
 
-    <h2>3. Google Sheets Integration (Internal Company Sheet)</h2>
+    <h2>3. Use of chrome.storage.sync (Why We Need the "storage" Permission)</h2>
+    <p>The <code>storage</code> permission is required to use <code>chrome.storage.sync</code>. This allows the following essential settings to automatically synchronize across all your Chrome browsers when you’re signed in with your Google account:</p>
     <ul>
-      <li>When you first connect the extension, you authorize it (via Google OAuth) to append rows to our company’s private Google Sheet.</li>
-      <li>The extension only has permission to <strong>add new rows</strong> – it cannot read, edit, or delete existing data.</li>
-      <li>Your Google credentials are never stored. Authentication is handled securely and directly by Google.</li>
+      <li>Your employee name</li>
+      <li>The Google Sheet ID / URL used for company reporting</li>
+      <li>Other minor preferences (e.g., UI settings)</li>
     </ul>
+    <p>This ensures the extension works consistently and correctly no matter which company computer or profile you use. Only these configuration settings are synced — <strong>no work history or tour data is stored in chrome.storage.sync</strong>.</p>
 
-    <h2>4. Local Storage on Your Device</h2>
-    <p>The extension temporarily stores your recent work history locally in the browser (Chrome extension storage) so you can:
-    <ul>
-      <li>View your entries inside the extension popup</li>
-      <li>Download them as a CSV file for your own records</li>
-    </ul>
-    This local data is only accessible on your computer and is automatically deleted if you uninstall the extension or clear browser data.
+    <h2>4. Local Work History (chrome.storage.local)</h2>
+    <p>Your recent entries are temporarily saved locally on the device (using <code>chrome.storage.local</code>) so you can:
+      <ul>
+        <li>View your list inside the extension popup</li>
+        <li>Download it as a CSV file</li>
+      </ul>
+    This local data is never synced or shared and is deleted when you uninstall the extension or clear browser data.
 
     <h2>5. Data We Do NOT Collect</h2>
     <ul>
       <li>Full Floorfy tour URLs</li>
-      <li>Any photos, videos, or property details</li>
-      <li>Personal contact information beyond your Google account display name</li>
-      <li>Browsing activity outside of floorfy.com</li>
-      <li>Any analytics or tracking for advertising purposes</li>
+      <li>Photos, videos, or property details</li>
+      <li>Personal contact information beyond your Google display name</li>
+      <li>Browsing activity outside floorfy.com</li>
+      <li>Any analytics or advertising tracking</li>
     </ul>
 
-    <h2>6. Who Has Access to the Data</h2>
-    <p>Only authorized management personnel at ASL Preservation Solutions have access to the company Google Sheet for internal review and payroll/quality purposes.</p>
-
-    <h2>7. Permissions Explained</h2>
+    <h2>6. Permissions Summary</h2>
     <ul>
-      <li><code>storage</code> – Save your settings and recent work history locally</li>
-      <li><code>https://*.floorfy.com/*</code> – Read the tour number and image count</li>
-      <li><code>https://sheets.googleapis.com/*</code> – Append rows to the company sheet</li>
-      <li><code>identity</code> – Get your Google account name (display name only)</li>
-      <li><code>downloads</code> – Allow CSV export</li>
+      <li><code>storage</code> – Save and sync settings + temporary local work history</li>
+      <li><code>https://*.floorfy.com/*</code> – Read tour number and image count</li>
+      <li><code>https://sheets.googleapis.com/*</code> – Append rows to company sheet</li>
+      <li><code>identity</code> – Retrieve your Google account display name</li>
+      <li><code>downloads</code> – Export CSV reports</li>
     </ul>
 
-    <h2>8. Data Security</h2>
-    <p>All communication with Google Sheets uses HTTPS and official Google OAuth 2.0. No data passes through any third-party server.</p>
+    <h2>7. Data Security & Access</h2>
+    <p>All connections use HTTPS and official Google OAuth. Only authorized ASL Preservation Solutions management can access the company Google Sheet.</p>
 
-    <h2>9. Changes to This Policy</h2>
-    <p>We may update this policy. Changes will be communicated to all users and the updated version will be published at this URL.</p>
-
-    <h2>10. Contact Us</h2>
+    <h2>8. Contact Us</h2>
     <p>
       <strong>Phone:</strong> +1 909-809-5952<br>
       <strong>Email:</strong> <a href="mailto:admin@aslpreservationsolutions.com">admin@aslpreservationsolutions.com</a>
     </p>
-    </div>
 
     <footer>
       © 2025 ASL Preservation Solutions – Internal Tool<br>
